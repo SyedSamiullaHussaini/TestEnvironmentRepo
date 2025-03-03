@@ -57,16 +57,16 @@ jobs:
       - name: Login via Az module
         uses: azure/login@v1
         with:
-          client-id: 8d707017-3197-4b95-a43d-334dbe9d1b42
-          tenant-id: 01580ab1-9bc6-459d-9fb1-573a17657721
-          subscription-id: b473decb-46aa-41cf-a842-5520adf0ad9c
+          client-id: ${{ secrets.DEV_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.DEV_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.DEV_AZURE_SUBSCRIPTION_ID }}
           enable-AzPSSession: true 
 
       - name: data-factory-deploy
         uses: Azure/data-factory-deploy-action@v1.2.0
         with:
-          resourceGroupName: dev-CICD-rg  # (6) your target ADF resource group name
-          dataFactoryName: dev-CICD-adf109 # (7) your target ADF name
+          resourceGroupName: ${{ vars.dev_rg }}  # (6) your target ADF resource group name
+          dataFactoryName: ${{ vars.dev_adf }} # (7) your target ADF name
           armTemplateFile: ARMTemplateForFactory.json # (8) ARM template file name ARMTemplateForFactory.json
           armTemplateParametersFile: ARMTemplateParametersForFactory.json # (9) ARM template parameters file name ARMTemplateParametersForFactory.json
           #additionalParameters: # (10) Parameters which will be replaced in the ARM template. Expected format 'key1=value key2=value keyN=value'. At the minimum here you should provide the target ADF name parameter. Check the ARMTemplateParametersForFactory.json file for all the parameters that are expected in your scenario
