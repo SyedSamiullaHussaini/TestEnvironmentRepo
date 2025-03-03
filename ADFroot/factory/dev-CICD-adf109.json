@@ -1,0 +1,9 @@
+{
+	"name": "dev-CICD-adf109",
+	"location": "canadacentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b85b0548-bba6-48cf-9425-fed94b8b8dfb",
+		"tenantId": "01580ab1-9bc6-459d-9fb1-573a17657721"
+	}
+}
